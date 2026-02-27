@@ -154,8 +154,8 @@ iframe{
     </div>
 
     <div class="kpi">
-      <div class="kpi-title">Delivery %</div>
-      <div class="kpi-value" id="kpiDelivery">--</div>
+      <div class="kpi-title">Top Visitor Category</div>
+      <div class="kpi-value" id="kpiTopCategory">--</div>
     </div>
   </div>
 
@@ -199,7 +199,7 @@ async function loadKPIs() {
       data.topApartment;
 
     document.getElementById("kpiTopCategory").textContent =
-      data.topCategory;
+  data.topCategory || "--";
 
   } catch (e) {
     console.error("KPI load failed", e);
