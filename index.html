@@ -54,9 +54,7 @@ body{
 
 /* ===== Container ===== */
 .container{
-  padding:24px;
-  max-width:1400px;
-  margin:auto;
+  padding:18px 24px 12px;
 }
 
 /* ===== KPI Cards ===== */
@@ -68,10 +66,7 @@ body{
 }
 
 .kpi{
-  background:var(--card);
-  padding:18px;
-  border-radius:14px;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  padding:16px;
 }
 
 .kpi-title{
@@ -106,9 +101,11 @@ body{
 
 iframe{
   width:100%;
-  height:620px;
+  height:calc(100vh - 220px); /* 🔥 dynamic fit */
+  min-height:520px;
   border:none;
   border-radius:12px;
+  background:white;
 }
 
 /* ===== Mobile ===== */
@@ -118,6 +115,12 @@ iframe{
   }
   iframe{
     height:720px;
+  }
+}
+
+@media(max-height:800px){
+  iframe{
+    height:calc(100vh - 180px);
   }
 }
 </style>
