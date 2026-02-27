@@ -180,11 +180,33 @@ setInterval(()=>{
   document.getElementById("dashboardFrame").src += "";
 },60000);
 
-/* 🧠 (Optional) Fake KPI for now — we can wire real later */
-document.getElementById("kpiTotal").textContent = "39";
-document.getElementById("kpiPeak").textContent = "8 PM";
-document.getElementById("kpiApt").textContent = "102";
-document.getElementById("kpiDelivery").textContent = "71.8%";
+
+  /* 🔥 Load real KPIs from Apps Script */
+async function loadKPIs() {
+  try {
+    const res = await fetch(
+      "PASTE_YOUR_WEBAPP_URL_HERE?summary=true"
+    );
+    const data = await res.json();
+
+    document.getElementById("kpiTotal").textContent =
+      data.totalVisitors;
+
+    document.getElementById("kpiPeak").textContent =
+      data.peakHour + ":00";
+
+    document.getElementById("kpiApt").textContent =
+      data.topApartment;
+
+    document.getElementById("kpiTopCategory").textContent =
+      data.topCategory;
+
+  } catch (e) {
+    console.error("KPI load failed", e);
+  }
+}
+
+loadKPIs();
 </script>
 
 </body>
